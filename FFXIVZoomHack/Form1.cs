@@ -35,9 +35,9 @@ namespace FFXIVZoomHack
             _autoQuitCheckbox.Checked = Settings.AutoQuit;
             _autoQuitCheckbox.CheckedChanged += AutoQuitCheckChanged;
 
-            _zoomUpDown.Value = (decimal) Settings.DesiredZoom;
+            _zoomUpDown.Value = (decimal)Settings.DesiredZoom;
             _zoomUpDown.ValueChanged += NumberChanged;
-            _fovUpDown.Value = (decimal) Settings.DesiredFov;
+            _fovUpDown.Value = (decimal)Settings.DesiredFov;
             _fovUpDown.ValueChanged += NumberChanged;
 
             _updateOffsetsTextbox.Text = Settings.OffsetUpdateLocation;
@@ -47,8 +47,8 @@ namespace FFXIVZoomHack
 
         private void NumberChanged(object sender, EventArgs e)
         {
-            Settings.DesiredZoom = (float) _zoomUpDown.Value;
-            Settings.DesiredFov = (float) _fovUpDown.Value;
+            Settings.DesiredZoom = (float)_zoomUpDown.Value;
+            Settings.DesiredFov = (float)_fovUpDown.Value;
             Settings.Save();
             ApplyChanges();
         }
@@ -71,7 +71,7 @@ namespace FFXIVZoomHack
 
                         for (var i = _processList.Items.Count - 1; i >= 0; i--)
                         {
-                            var pid = (int) _processList.Items[i];
+                            var pid = (int)_processList.Items[i];
                             if (!activePids.Contains(pid))
                             {
                                 _processList.Items.RemoveAt(i);
@@ -155,7 +155,7 @@ namespace FFXIVZoomHack
                 return;
             }
 
-            var selectedPid = (int) _processList.SelectedItem;
+            var selectedPid = (int)_processList.SelectedItem;
             using (var process = Process.GetProcessById(selectedPid))
             {
                 var handle = process.MainWindowHandle;
@@ -242,7 +242,7 @@ namespace FFXIVZoomHack
 
         private void _updateLocationDefault_Click(object sender, EventArgs e)
         {
-            _updateOffsetsTextbox.Text = @"https://raw.githubusercontent.com/jayotterbein/FFXIV-Zoom-Hack/master/Offsets.xml";
+            _updateOffsetsTextbox.Text = @"https://raw.githubusercontent.com/kainstar/FFXIV-Zoom-Hack/master/Offsets.xml";
         }
 
         private static Settings LoadSettingsFromRemote(string url)
