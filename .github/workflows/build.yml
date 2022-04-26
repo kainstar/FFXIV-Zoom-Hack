@@ -1,6 +1,8 @@
 name: Build FFXIV Zoom Hack
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [master]
 
 jobs:
   build:
@@ -8,16 +10,22 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
 
-      - name: Add msbuild to PATH
+      - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
+
+      - name: Setup NuGet.exe for use with actions
+        uses: NuGet/setup-nuget@v1.0.6
+
+      - name: Restore NuGet package
+        run: nuget restore FFXIVZoomHack.sln
 
       - name: Build release application
         run: msbuild FFXIVZoomHack.sln /t:rebuild /property:Configuration=Release
 
       - name: Archive build artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.0.0
         with:
           name: "FFXIVZoomHack.exe"
           path: "FFXIVZoomHack\\bin\\Release\\FFXIVZoomHack.exe"
