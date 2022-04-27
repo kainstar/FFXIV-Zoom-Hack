@@ -197,8 +197,7 @@ namespace FFXIVZoomHack
             this._autoQuitCheckbox.Size = new System.Drawing.Size(132, 16);
             this._autoQuitCheckbox.TabIndex = 11;
             this._autoQuitCheckbox.Text = "进程关闭时自动退出";
-            this._autoQuitTooltip.SetToolTip(this._autoQuitCheckbox, "Automatically close FFXIV Zoom Hack after \r\npreviously detected instances of FFXI" +
-        "V are closed");
+            this._autoQuitTooltip.SetToolTip(this._autoQuitCheckbox, "FFXIV 退出后自动关闭 FFXIV Zoom Hack");
             this._autoQuitCheckbox.UseVisualStyleBackColor = true;
             // 
             // _gotoProcessButton
